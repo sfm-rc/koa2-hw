@@ -1,5 +1,5 @@
 {
-  "name": "koa2-startkit",
+  "name": "koa2-hw",
   "version": "0.2.0",
   "author": "wssgcg1213",
   "scripts": {
@@ -52,7 +52,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/17koa/koa2-startkit.git"
+    "url": "git+https://github.com/sfm-rc/koa2-hw.git"
   },
   "license": "MIT"
 }
