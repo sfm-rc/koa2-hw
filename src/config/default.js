@@ -6,9 +6,10 @@
 export default {
   port: 3000,
   db: {
-    host: 'localhost',
-    database: 'koa2_startkit',
-    username: 'root',
-    password: ''
+    host: '47.52.24.191',
+    port: '3308',
+    database: 'hw',
+    user: 'root',
+    password: 'suyuan123'
   }
 }
