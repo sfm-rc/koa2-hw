@@ -17,4 +17,9 @@ router.get('/', indexCtrl)
  */
 router.post('/hw/activity/list', activityCtrl.list)
 
+/**
+ * 添加活动
+ */
+router.post('/hw/activity/add', activityCtrl.add)
+
 export default router
