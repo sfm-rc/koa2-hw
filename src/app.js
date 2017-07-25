@@ -9,11 +9,13 @@ import logger from 'koa-logger'
 import koaStatic from 'koa-static-plus'
 import koaOnError from 'koa-onerror'
 import config from './config'
+import cors from 'koa2-cors'
 
 const app = new Koa()
 const bodyparser = Bodyparser()
 
 // middlewares
+app.use(cors());
 app.use(convert(bodyparser))
 app.use(convert(json()))
 app.use(convert(logger()))
@@ -46,7 +48,7 @@ app.use(async (ctx, next) => {
 //   await require('./routes').routes()(ctx, next)
 // })
 const routers = require('./routes')
-app.use(routers.routes()).use(routers.allowedMethods())
+app.use('/hw', routers.routes()).use(routers.allowedMethods())
 
 // 404
 app.use(async (ctx) => {

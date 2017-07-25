@@ -20,20 +20,5 @@ router.post('/list', activityCtrl.list)
  */
 router.post('/add', activityCtrl.add)
 
-/**
- * 报名
- * 
- * {
-    "user_name":"sy1",
-    "user_name_alias": "sy1_1",
-    "sex": 1,
-    "mobile": "1111111",
-    "down_payment": 8888,
-    "activity_id": 1,
-    "extra": "ooooo"
-    }
- * 
- */
-router.post('/join', activityCtrl.join)
 
 export default router

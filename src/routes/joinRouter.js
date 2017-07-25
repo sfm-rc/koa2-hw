@@ -1,0 +1,22 @@
+import Router from 'koa-router'
+import joinCtrl from '../controllers/joinCtrl'
+
+const router = Router()
+
+/**
+ * 报名
+ * 
+ * {
+    "user_name":"sy1",
+    "user_name_alias": "sy1_1",
+    "sex": 1,
+    "mobile": "1111111",
+    "down_payment": 8888,
+    "activity_id": 1,
+    "extra": "ooooo"
+    }
+ * 
+ */
+router.post('/add', joinCtrl.join)
+
+export default router

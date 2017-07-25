@@ -92,7 +92,7 @@ cp nginx.conf /etc/nginx/conf.d/YourProject.conf # 自行配置 nginx 反代
         }
 
 #### 报名
-	/hw/activity/join
+	/hw/join/add
 -	【权限】U
 -	【说明】
 
