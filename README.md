@@ -80,7 +80,7 @@ cp nginx.conf /etc/nginx/conf.d/YourProject.conf # 自行配置 nginx 反代
 
 ### 活动接口
 
-#### 1.获取活动
+#### 获取活动
 	/hw/activity/list
 -	【权限】U
 -	【说明】
@@ -91,3 +91,21 @@ cp nginx.conf /etc/nginx/conf.d/YourProject.conf # 自行配置 nginx 反代
         "pageIndex": 1,
         "limit": 10
         }
+
+#### 报名
+	/hw/activity/join
+-	【权限】U
+-	【说明】
+
+	>	down_payment	定金价格单位是角
+-	【参数】
+
+		{
+		"user_name":"sy1",
+		"user_name_alias": "sy1_1",
+		"sex": 1,
+		"mobile": "1111111",
+		"down_payment": 8888,
+		"activity_id": 1,
+		"extra": "ooooo"
+		}

@@ -4,22 +4,12 @@ import activityCtrl from '../controllers/activityCtrl'
 
 const router = Router()
 
-router.get('/', indexCtrl)
+// router.get('/', indexCtrl)
+
+const activity = require('./activity')
+router.use('/activity', activity.routes(), activity.allowedMethods())
 
 
-/**
- * 获取活动列表 
- *  {
-    "admin_id":"1",
-    "pageIndex": 1,
-    "limit": 10
-    }
- */
-router.post('/hw/activity/list', activityCtrl.list)
-
-/**
- * 添加活动
- */
-router.post('/hw/activity/add', activityCtrl.add)
-
-export default router
+const routers = Router()
+routers.use('/hw', router.routes(), router.allowedMethods())
+export default routers

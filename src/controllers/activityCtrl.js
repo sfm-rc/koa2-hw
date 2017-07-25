@@ -1,6 +1,6 @@
 
 import {query} from '../models/db_connection';
-import { pagination} from '../uitil';
+import { pagination, getLinuxTimeStamp} from '../uitil';
 
 /**
  * 获取活动列表
@@ -14,9 +14,14 @@ const list = async (ctx, next) => {
   let data = await query(sql, [admin_id, (pageIndex-1)*limit, limit]);
   let count = await query('select count(*) as count from hw_activity where admin_id=?', [admin_id]);
   
-  ctx.body = Object.assign({code: '0', message: 'success', 'data': data}, pagination(limit, pageIndex, count[0].count));
+  ctx.body = Object.assign({code: 0, message: 'success', 'data': data}, pagination(limit, pageIndex, count[0].count));
 }
 
+/**
+ * 添加活动
+ * @param {*} ctx 
+ * @param {*} next 
+ */
 const add = async(ctx, next) => {
   const params = ctx.request.body;
   const {admin_id} = params;
@@ -24,7 +29,22 @@ const add = async(ctx, next) => {
   console.log(ctx.request.body)
 }
 
+const join = async(ctx, next) => {
+  const params = ctx.request.body;
+  const {user_name, user_name_alias, sex, mobile, down_payment, activity_id, extra} = params;
+
+  const sql = `INSERT into hw_join VALUES(
+    NULL,'${user_name}', '${user_name_alias}', '${sex}', '${mobile}', 
+    '${down_payment}', '${extra}', '${activity_id}', '${getLinuxTimeStamp()}'
+  )`;
+  let data = await query(sql);
+  console.log(data);
+  ctx.body = {code: 0, message:'报名成功', data}
+}
+
 
 export default {
   list,
+  add,
+  join
 }

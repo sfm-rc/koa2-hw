@@ -7,3 +7,7 @@ export const pagination = (limit, pageIndex, count) => {
         }
     }
 }
+
+export const getLinuxTimeStamp = () => {
+    return (new Date).getTime()/1000
+}
