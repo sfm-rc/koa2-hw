@@ -19,4 +19,15 @@ const router = Router()
  */
 router.post('/add', joinCtrl.join)
 
+/**
+ * 获取报名列表
+ * 
+ * {
+    "limit": 10,
+    "pageIndex":1,
+    "activity_id": 1
+    }
+ */
+router.post('/list', joinCtrl.list)
+
 export default router

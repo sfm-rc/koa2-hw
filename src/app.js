@@ -15,7 +15,19 @@ const app = new Koa()
 const bodyparser = Bodyparser()
 
 // middlewares
-app.use(cors());
+app.use(cors({
+  origin: function(ctx) {
+    if (ctx.url === '/test') {
+      return false;
+    }
+    return '*';
+  },
+  // exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+  maxAge: 60*60*24*7,
+  credentials: true,
+  // allowMethods: ['GET', 'POST', 'DELETE'],
+  // allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+}));
 app.use(convert(bodyparser))
 app.use(convert(json()))
 app.use(convert(logger()))

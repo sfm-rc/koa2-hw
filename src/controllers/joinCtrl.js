@@ -20,6 +20,27 @@ const join = async(ctx, next) => {
   ctx.body = {code: 0, message:'报名成功', data}
 }
 
+/**
+ * 获取报名表
+ * @param {*} ctx 
+ * @param {*} next 
+ */
+const list = async(ctx, next) =>{
+    const params = ctx.request.body;
+    const {pageIndex, limit, activity_id} = params;
+    const sql = `select * from hw_join where 
+    activity_id='${activity_id}' limit ${(pageIndex-1)*limit}, ${limit}`;
+    const c_sql = `select count(*) as count from hw_join where 
+    activity_id='${activity_id}'`;
+    let data = await query(sql);
+    const count = (await query(c_sql))[0].count
+    ctx.body = Object.assign( 
+        {code: 0, message: 'success', data}, 
+        pagination(limit, pageIndex, count)
+    )
+}
+
 export default {
     join,
+    list
 }
