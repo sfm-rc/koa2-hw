@@ -56,11 +56,11 @@ app.use(async (ctx, next) => {
 })
 
 // response router
-// app.use(async (ctx, next) => {
-//   await require('./routes').routes()(ctx, next)
-// })
-const routers = require('./routes')
-app.use('/hw', routers.routes()).use(routers.allowedMethods())
+app.use(async (ctx, next) => {
+  await require('./routes').routes()(ctx, next)
+})
+// const routers = require('./routes')
+// app.use('/hw', routers.routes()).use(routers.allowedMethods())
 
 // 404
 app.use(async (ctx) => {
