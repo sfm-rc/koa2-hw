@@ -11,13 +11,40 @@ import { pagination, getLinuxTimeStamp} from '../uitil';
 const join = async(ctx, next) => {
   const params = ctx.request.body;
   const {user_name, user_name_alias, sex, mobile, down_payment, activity_id, extra} = params;
+  //---
+  await query('set autocommit=0;');
+  await query('begin;');
+  try{
+      console.info('lock for activity_id', activity_id);
+    const activities = await query('select * from hw_activity where id=? for update;', [activity_id]);// activity_id这行加了行锁
+    const activity = activities[0];
+    if(activity.cur_num<activity.limit_num){
+        // 可以报名
+        const sql = `INSERT into hw_join VALUES(
+            NULL,'${user_name}', '${user_name_alias}', '${sex}', '${mobile}', 
+            '${down_payment}', '${extra}', '${activity_id}', '${getLinuxTimeStamp()}'
+        )`;
+        var data = await query(sql);
+        console.log('insert hw_join for join', data);
+        if(data.insertId>0){
+            const update_res = await query('UPDATE hw_activity set cur_num=cur_num+1 WHERE id=?', [activity_id]);
+            console.log('update set ++1', update_res);
+            ctx.body = {code: 0, message:'报名成功', data}
+        }
+    }
+    else{
+        ctx.body = {code: 110, message:'报名失败', data:'人数超过显示'}
+        
+    }
+  }
+  catch(error){
+    console.error('join fail', error);
+    await query('ROLLBACK');
+  }
+  await query('commit;');
 
-  const sql = `INSERT into hw_join VALUES(
-    NULL,'${user_name}', '${user_name_alias}', '${sex}', '${mobile}', 
-    '${down_payment}', '${extra}', '${activity_id}', '${getLinuxTimeStamp()}'
-  )`;
-  let data = await query(sql);
-  ctx.body = {code: 0, message:'报名成功', data}
+  console.info('ulock for activity_id', activity_id);
+  //---
 }
 
 /**
