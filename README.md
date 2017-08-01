@@ -91,6 +91,16 @@ cp nginx.conf /etc/nginx/conf.d/YourProject.conf # 自行配置 nginx 反代
         "limit": 10
         }
 
+#### 获取活动详情
+	/hw/activity/get
+-	【权限】U
+-	【说明】
+-	【参数】
+
+		{
+        "id":"1"
+        }
+
 #### 报名
 	/hw/join/add
 -	【权限】U

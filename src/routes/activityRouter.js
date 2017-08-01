@@ -20,5 +20,9 @@ router.post('/list', activityCtrl.list)
  */
 router.post('/add', activityCtrl.add)
 
+/**
+ * 获取详情
+ */
+router.post('/get', activityCtrl.get)
 
 export default router

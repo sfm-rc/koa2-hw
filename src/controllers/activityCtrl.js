@@ -29,6 +29,19 @@ const list = async (ctx, next) => {
 }
 
 /**
+ * 获取详情
+ * @param {*} ctx 
+ * @param {*} next 
+ */
+const get = async(ctx, next) => {
+  const params = ctx.request.body;
+  const {id} = params;
+  const sql = 'select * from hw_activity where id=?';
+  const activity = await query(sql, [id]);
+  ctx.body = {code: 0, message: 'success', data: activity[0]}
+}
+
+/**
  * 添加活动
  * @param {*} ctx 
  * @param {*} next 
@@ -44,5 +57,5 @@ const add = async(ctx, next) => {
 export default {
   list,
   add,
-  
+  get,
 }
