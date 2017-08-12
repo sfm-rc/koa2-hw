@@ -16,9 +16,24 @@ const router = Router()
 router.post('/list', activityCtrl.list)
 
 /**
+ * 获取活动列表,管理后台使用
+ *  {
+    "admin_id":"1",
+    "pageIndex": 1,
+    "limit": 10
+    }
+ */
+router.post('/list_search', activityCtrl.list_search)
+
+/**
  * 添加活动
  */
 router.post('/add', activityCtrl.add)
+
+/**
+ * 更新活动
+ */
+router.post('/update', activityCtrl.update)
 
 /**
  * 获取详情
