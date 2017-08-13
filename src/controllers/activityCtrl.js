@@ -11,9 +11,9 @@ import moment from 'moment';
 const list = async (ctx, next) => {
   const params = ctx.request.body;
   const {admin_id, limit, pageIndex} = params;
-  const sql = 'select * from hw_activity where admin_id=? limit ?,?';
+  const sql = 'select * from hw_activity where admin_id=? ORDER BY seq desc limit ?,?';
   let data = await query(sql, [admin_id, (pageIndex-1)*limit, limit]);
-  let count = await query('select count(*) as count from hw_activity ORDER BY seq desc where admin_id=?', [admin_id]);
+  let count = await query('select count(*) as count from hw_activity where admin_id=?', [admin_id]);
   // let join_count = await query('select count(*) as count from hw_join where activity_id=?', [data])
   data = data.map(item=>{
     if(item.registrate_end_time < moment().unix()){
