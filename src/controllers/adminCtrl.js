@@ -65,7 +65,7 @@ const logout = async(ctx, next) =>{
     );
     ctx.cookies.set('permission', false);
     ctx.cookies.set('name', '')
-    ctx.body = {code: 0, message: 'success', data};
+    ctx.body = {code: 0, message: 'success', data: {}};
 }
 
 export default {
