@@ -19,6 +19,13 @@ const join = require('./joinRouter')
 router.use('/join', join.routes(), join.allowedMethods())
 
 /**
+ * 管理员路由
+ */
+const admin = require('./adminRouter')
+router.use('/admin', admin.routes(), admin.allowedMethods())
+
+
+/**
  * 总路由 hw
  */
 const routers = Router()
