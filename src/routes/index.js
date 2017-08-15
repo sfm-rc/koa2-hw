@@ -1,6 +1,6 @@
 import Router from 'koa-router'
 import indexCtrl from '../controllers/indexCtrl'
-import activityCtrl from '../controllers/activityCtrl'
+
 
 const router = Router()
 
@@ -24,6 +24,11 @@ router.use('/join', join.routes(), join.allowedMethods())
 const admin = require('./adminRouter')
 router.use('/admin', admin.routes(), admin.allowedMethods())
 
+/**
+ * 保单路由
+ */
+const insurance = require('./insuranceRouter')
+router.use('/insurance', insurance.routes(), insurance.allowedMethods())
 
 /**
  * 总路由 hw
