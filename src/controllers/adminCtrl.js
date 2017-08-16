@@ -20,7 +20,7 @@ const login = async(ctx, next) =>{
     if(data.length>0){
         const admin = data[0];
          ctx.cookies.set(
-            'id', 
+            'admin_id', 
             admin.id,
             {
                 // domain: 'localhost',  // 写cookie所在的域名
@@ -60,7 +60,7 @@ const login = async(ctx, next) =>{
  */
 const logout = async(ctx, next) =>{
     ctx.cookies.set(
-        'id', 
+        'admin_id', 
         ''
     );
     ctx.cookies.set('permission', false);
