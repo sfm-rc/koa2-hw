@@ -37,9 +37,7 @@ const list_search = async (ctx, next) => {
   const params = ctx.request.body;
   const {admin_id, id, title, limit, pageIndex} = params;
   const where = {};
-  if(admin_id){
-    where['admin_id'] = admin_id;
-  }
+
   if(id){
     where['id'] = id;
   }
@@ -58,10 +56,20 @@ const list_search = async (ctx, next) => {
       where_sql = `${where_sql} and ${item} like "%${value}%"`;
     }
   }
+  if(admin_id&&admin_id!=0){
+    if(first){
+      where_sql = `where admin_id=${admin_id}`;
+      first = false;
+    }
+    else {
+      where_sql = `${where_sql} and admin_id=${admin_id}`;
+    }
+  }
 
-  const sql = `select * from hw_activity ${where_sql} ORDER BY seq desc limit ?,?`;
+
+  const sql = `select A.*, B.club_name from hw_activity as A join hw_admin as B on A.admin_id=B.id ${where_sql} ORDER BY seq desc limit ${(pageIndex-1)*limit},${limit}`;
   console.log('list_search_sql:', sql);
-  let data = await query(sql, [(pageIndex-1)*limit, limit]);
+  let data = await query(sql);
   let count = await query(`select count(*) as count from hw_activity ${where_sql}`);
   // let join_count = await query('select count(*) as count from hw_join where activity_id=?', [data])
   data = data.map(item=>{

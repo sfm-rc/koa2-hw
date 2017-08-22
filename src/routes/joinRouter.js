@@ -30,4 +30,16 @@ router.post('/add', joinCtrl.join)
  */
 router.post('/list', joinCtrl.list)
 
+/**
+ * 获取报名列表， 后台使用
+ * 
+ * {
+    "limit": 10,
+    "pageIndex":1,
+    "activity_id": 1
+    }
+ */
+router.post('/list_search', joinCtrl.list_search)
+
+
 export default router
