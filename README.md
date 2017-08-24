@@ -91,6 +91,16 @@ cp nginx.conf /etc/nginx/conf.d/YourProject.conf # 自行配置 nginx 反代
         "limit": 10
         }
 
+#### 获取活动详情
+	/hw/activity/get
+-	【权限】U
+-	【说明】
+-	【参数】
+
+		{
+        "id":"1"
+        }
+
 #### 报名
 	/hw/join/add
 -	【权限】U
@@ -107,4 +117,24 @@ cp nginx.conf /etc/nginx/conf.d/YourProject.conf # 自行配置 nginx 反代
 		"down_payment": 8888,
 		"activity_id": 1,
 		"extra": "ooooo"
+		}
+
+#### 填写保单
+	/hw/insurance/add
+-	【权限】U
+-	【说明】
+
+	>	brith	生日，unix时间戳
+-	【参数】
+
+		{
+			"activity_id": 1, 
+			"user_name":"suyuan", 
+			"cer_type": "id_card", 
+			"cer_id": "1111", 
+			"sex":1, 
+			"birth": 11111, 
+			"mobile":"13636672480", 
+			"e_contact":"zhuli", 
+			"e_contact_mobile":"1110"
 		}

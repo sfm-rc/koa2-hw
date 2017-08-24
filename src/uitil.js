@@ -3,7 +3,8 @@ export const pagination = (limit, pageIndex, count) => {
         pagination: {
             pageCount: Math.ceil(count/limit),
             pageIndex,
-            limit
+            limit,
+            total: count,
         }
     }
 }

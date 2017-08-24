@@ -1,0 +1,15 @@
+{
+  "uris": {
+    "/hybrid/user-hw/": "/index.html",
+    "/hybrid/user-hw/profile/edit/:activity_id": "/index.html",
+    "/hybrid/user-hw/activity/list/:admin_id": "/index.html",
+    "/hybrid/user-hw/activity/join/:activity_id": "/index.html",
+    "/hybrid/user-hw/trail/list": "/index.html",
+    "/hybrid/user-hw/trail/detail": "/index.html",
+    "/hybrid/user-hw/list": "/index.html",
+    "/user-hw-staticapp-232cc40e0e3343ceee25.js": "/app-232cc40e0e3343ceee25.js",
+    "/user-hw-staticframework-232cc40e0e3343ceee25.js": "/framework-232cc40e0e3343ceee25.js",
+    "/user-hw-staticapp-232cc40e0e3343ceee25.css": "/app-232cc40e0e3343ceee25.css",
+    "/user-hw-staticvendor-232cc40e0e3343ceee25.css": "/vendor-232cc40e0e3343ceee25.css"
+  }
+}
