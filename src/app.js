@@ -1,15 +1,14 @@
 import http from 'http'
 import Koa from 'koa'
 import path from 'path'
-import views from 'koa-views'
 import convert from 'koa-convert'
 import json from 'koa-json'
 import Bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import koaStatic from 'koa-static-plus'
-import koaOnError from 'koa-onerror'
 import config from './config'
 import cors from 'koa2-cors'
+import send from 'koa-send'
 
 const app = new Koa()
 const bodyparser = Bodyparser()
@@ -27,7 +26,7 @@ app.use(cors({
   credentials: true,
   // allowMethods: ['GET', 'POST', 'DELETE'],
   // allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-}));
+}))
 app.use(convert(bodyparser))
 app.use(convert(json()))
 app.use(convert(logger()))
@@ -38,14 +37,9 @@ app.use(convert(koaStatic(path.join(__dirname, '../public'), {
 })))
 
 // views
-app.use(views(path.join(__dirname, '../views'), {
-  extension: 'ejs'
-}))
-
-// 500 error
-koaOnError(app, {
-  template: 'views/500.ejs'
-})
+// app.use(views(path.join(__dirname, '../views'), {
+//   extension: 'ejs'
+// }))
 
 // logger
 app.use(async (ctx, next) => {
@@ -54,6 +48,18 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+app.use(async (ctx, next) => {
+  //console.log('--------ctx:', ctx);
+  const url = ctx.url;
+  if (url.indexOf('/dist') > -1) {
+    const filePath = url.substr(url.lastIndexOf('/'), url.length);
+    console.log('---------filePath:', filePath);
+    await send(ctx, path.resolve('/public/dist' + filePath));
+  } else {
+    await send(ctx, path.resolve('/public/index.html'));
+  }
+  await next();
+});
 
 // response router
 app.use(async (ctx, next) => {
@@ -62,13 +68,6 @@ app.use(async (ctx, next) => {
 // const routers = require('./routes')
 // app.use('/hw', routers.routes()).use(routers.allowedMethods())
 
-// 404
-app.use(async (ctx) => {
-  ctx.status = 404
-  await ctx.render('404')
-})
-
-// error logger
 app.on('error', async (err, ctx) => {
   console.log('error occured:', err)
 })
