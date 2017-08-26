@@ -77,7 +77,7 @@ var list = function () {var _ref2 = (0, _asyncToGenerator3.default)( /*#__PURE__
                                                                                                                                                                                                                   * @param {*} ctx
                                                                                                                                                                                                                   * @param {*} next
                                                                                                                                                                                                                   */
-var list_search = function () {var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(ctx, next) {var params, admin_id, activity_id, user_name, user_name_alias, mobile, limit, pageIndex, where, where_sql, first, item, value, activities, sql, data, count;return _regenerator2.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
+var list_search = function () {var _ref3 = (0, _asyncToGenerator3.default)( /*#__PURE__*/_regenerator2.default.mark(function _callee3(ctx, next) {var params, admin_id, activity_id, user_name, user_name_alias, mobile, limit, pageIndex, where, where_sql, first, item, value, activities, sql, data, _item, ziliao, count;return _regenerator2.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
             params = ctx.request.body;
             admin_id = params.admin_id, activity_id = params.activity_id, user_name = params.user_name, user_name_alias = params.user_name_alias, mobile = params.mobile, limit = params.limit, pageIndex = params.pageIndex;
             where = {};
@@ -132,15 +132,19 @@ var list_search = function () {var _ref3 = (0, _asyncToGenerator3.default)( /*#_
             where_sql + ' limit ' + (pageIndex - 1) * limit + ',' + limit;
 
             console.log('join_list_search_sql:', sql);_context3.next = 24;return (
-              (0, _db_connection.query)(sql));case 24:data = _context3.sent;_context3.next = 27;return (
+              (0, _db_connection.query)(sql));case 24:data = _context3.sent;_context3.t0 = _regenerator2.default.keys(
+            data);case 26:if ((_context3.t1 = _context3.t0()).done) {_context3.next = 34;break;}_item = _context3.t1.value;_context3.next = 30;return (
+              (0, _db_connection.query)('select * from hw_insurance where activity_id=? and mobile=?', [_item.activity_id, _item.mobile]));case 30:ziliao = _context3.sent;
+            data[_item].isZiliao = ziliao.length === 0 ? 0 : 1;_context3.next = 26;break;case 34:_context3.next = 36;return (
 
-              (0, _db_connection.query)('select count(*) as count from hw_join ' + where_sql));case 27:count = _context3.sent;
+              (0, _db_connection.query)('select count(*) as count from hw_join ' + where_sql));case 36:count = _context3.sent;
 
-            ctx.body = (0, _assign2.default)({ code: 0, message: 'success', 'data': data }, (0, _uitil.pagination)(limit, pageIndex, count[0].count));case 29:case 'end':return _context3.stop();}}}, _callee3, undefined);}));return function list_search(_x5, _x6) {return _ref3.apply(this, arguments);};}();exports.default =
+            ctx.body = (0, _assign2.default)({ code: 0, message: 'success', 'data': data }, (0, _uitil.pagination)(limit, pageIndex, count[0].count));case 38:case 'end':return _context3.stop();}}}, _callee3, undefined);}));return function list_search(_x5, _x6) {return _ref3.apply(this, arguments);};}();exports.default =
 
 
 {
   join: join,
   list: list,
   list_search: list_search };module.exports = exports['default'];
+
 //# sourceMappingURL=joinCtrl.js.map

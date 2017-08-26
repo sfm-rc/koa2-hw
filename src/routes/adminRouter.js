@@ -39,4 +39,11 @@ router.post('/add', adminCtrl.add)
  */
 router.post('/update', adminCtrl.update)
 
+
+
+/**
+ * 获取管理员
+ */
+router.post('/get', adminCtrl.get)
+
 export default router

@@ -4,7 +4,7 @@
                                          * @Email i@zeroling.com
                                          */exports.default =
 {
-  port: 3001,
+  port: 3000,
   db: {
     host: '47.52.24.191',
     port: '3308',

@@ -56,6 +56,7 @@ var list_search = function () {var _ref2 = (0, _asyncToGenerator3.default)( /*#_
                 where_sql = where_sql + ' and ' + item + ' like "%' + value + '%"';
               }
             }
+            console.log('admin_id', admin_id);
             if (admin_id && admin_id != 0) {
               if (first) {
                 where_sql = 'where admin_id=' + admin_id;
@@ -68,9 +69,9 @@ var list_search = function () {var _ref2 = (0, _asyncToGenerator3.default)( /*#_
 
 
             sql = 'select A.*, B.club_name from hw_activity as A join hw_admin as B on A.admin_id=B.id ' + where_sql + ' ORDER BY seq desc limit ' + (pageIndex - 1) * limit + ',' + limit;
-            console.log('list_search_sql:', sql);_context2.next = 13;return (
-              (0, _db_connection.query)(sql));case 13:data = _context2.sent;_context2.next = 16;return (
-              (0, _db_connection.query)('select count(*) as count from hw_activity ' + where_sql));case 16:count = _context2.sent;
+            console.log('list_search_sql:', sql);_context2.next = 14;return (
+              (0, _db_connection.query)(sql));case 14:data = _context2.sent;_context2.next = 17;return (
+              (0, _db_connection.query)('select count(*) as count from hw_activity ' + where_sql));case 17:count = _context2.sent;
             // let join_count = await query('select count(*) as count from hw_join where activity_id=?', [data])
             data = data.map(function (item) {
               if (item.registrate_end_time < (0, _moment2.default)().unix()) {
@@ -82,7 +83,7 @@ var list_search = function () {var _ref2 = (0, _asyncToGenerator3.default)( /*#_
               return item;
             });
 
-            ctx.body = (0, _assign2.default)({ code: 0, message: 'success', 'data': data }, (0, _uitil.pagination)(limit, pageIndex, count[0].count));case 19:case 'end':return _context2.stop();}}}, _callee2, undefined);}));return function list_search(_x3, _x4) {return _ref2.apply(this, arguments);};}();
+            ctx.body = (0, _assign2.default)({ code: 0, message: 'success', 'data': data }, (0, _uitil.pagination)(limit, pageIndex, count[0].count));case 20:case 'end':return _context2.stop();}}}, _callee2, undefined);}));return function list_search(_x3, _x4) {return _ref2.apply(this, arguments);};}();
 
 
 /**

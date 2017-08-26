@@ -22,7 +22,7 @@ const login = async(ctx, next) =>{
         const admin = data[0];
          ctx.cookies.set(
             'admin_id', 
-            admin.id,
+            `0123${admin.id}`,
             {
                 // domain: 'localhost',  // 写cookie所在的域名
                 // path: '/index',       // 写cookie所在的路径
@@ -135,10 +135,12 @@ const add = async(ctx, next) => {
  */
 const update = async(ctx, next) => {
   const params = ctx.request.body;
-  const {id, name, mobile, email, pwd, club_name, club_address, 
+  const {id, name, mobile, email, pwd, club_name, club_address_p, club_address_c, club_address_t, club_address_detail,
     contact_name, contact_mobile, contact_email} = params;
   const sql = `update hw_admin set name='${name}', mobile='${mobile}', email='${email}',
-              pwd='${pwd}', club_name='${club_name}', club_address='${club_address}', contact_name='${contact_name}',
+              pwd='${pwd}', club_name='${club_name}', 
+              club_address_p='${club_address_p}', club_address_t='${club_address_t}', club_address_c='${club_address_c}',club_address_detail='${club_address_detail}',
+              contact_name='${contact_name}',
               contact_mobile='${contact_mobile}', 
               contact_email='${contact_email}' where id=${id}`;
   console.log('update admin sql:', sql);
@@ -146,6 +148,20 @@ const update = async(ctx, next) => {
   ctx.body = {code: 0, message: 'success', data: res}
 }
 
+/**
+ *
+ * @param ctx
+ * @param next
+ * @returns {Promise.<void>}
+ */
+const get = async(ctx, next) => {
+  const params = ctx.request.body;
+  const {admin_id} = params;
+  const sql = `select * from hw_admin where id='${admin_id}'`;
+  console.log('get admin sql:', sql);
+  const res = await query(sql);
+  ctx.body = {code: 0, message: 'success', data: res}
+}
 
 export default {
     logout,
@@ -153,4 +169,5 @@ export default {
     list_search,
     add,
     update,
+  get,
 }

@@ -37,7 +37,15 @@ router.post('/add', _adminCtrl2.default.add);
 /**
                                                * 更新管理员
                                                */
-router.post('/update', _adminCtrl2.default.update);exports.default =
+router.post('/update', _adminCtrl2.default.update);
+
+
+
+/**
+                                                     * 获取管理员
+                                                     */
+router.post('/get', _adminCtrl2.default.get);exports.default =
 
 router;module.exports = exports['default'];
+
 //# sourceMappingURL=adminRouter.js.map
