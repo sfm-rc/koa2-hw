@@ -6,7 +6,6 @@ import json from 'koa-json'
 import Bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import koaStatic from 'koa-static-plus'
-import serve from 'koa-static'
 import config from './config'
 import cors from 'koa2-cors'
 import send from 'koa-send'
@@ -67,7 +66,7 @@ app.use(async (ctx, next) => {
   await next();
 });
 
-app.use(serve('/public'));
+//app.use(serve('/public'));
 app.use(async (ctx, next) => {
   const url = ctx.url;
   console.log('--------url:', url);

@@ -6,7 +6,6 @@ var _koaJson = require('koa-json');var _koaJson2 = _interopRequireDefault(_koaJs
 var _koaBodyparser = require('koa-bodyparser');var _koaBodyparser2 = _interopRequireDefault(_koaBodyparser);
 var _koaLogger = require('koa-logger');var _koaLogger2 = _interopRequireDefault(_koaLogger);
 var _koaStaticPlus = require('koa-static-plus');var _koaStaticPlus2 = _interopRequireDefault(_koaStaticPlus);
-var _koaStatic = require('koa-static');var _koaStatic2 = _interopRequireDefault(_koaStatic);
 var _config = require('./config');var _config2 = _interopRequireDefault(_config);
 var _koa2Cors = require('koa2-cors');var _koa2Cors2 = _interopRequireDefault(_koa2Cors);
 var _koaSend = require('koa-send');var _koaSend2 = _interopRequireDefault(_koaSend);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
@@ -67,7 +66,7 @@ app.use(function () {var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.d
               next());case 12:case 'end':return _context2.stop();}}}, _callee2, undefined);}));return function (_x3, _x4) {return _ref2.apply(this, arguments);};}());
 
 
-app.use((0, _koaStatic2.default)('/public'));
+//app.use(serve('/public'));
 app.use(function () {var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(ctx, next) {var url, filePath;return _regenerator2.default.wrap(function _callee3$(_context3) {while (1) {switch (_context3.prev = _context3.next) {case 0:
             url = ctx.url;
             console.log('--------url:', url);if (!(
