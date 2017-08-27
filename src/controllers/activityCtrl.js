@@ -56,6 +56,7 @@ const list_search = async (ctx, next) => {
       where_sql = `${where_sql} and ${item} like "%${value}%"`;
     }
   }
+  console.log('admin_id', admin_id);
   if(admin_id&&admin_id!=0){
     if(first){
       where_sql = `where admin_id=${admin_id}`;

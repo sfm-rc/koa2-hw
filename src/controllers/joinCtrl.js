@@ -133,8 +133,11 @@ const list_search = async (ctx, next) => {
 
   console.log('join_list_search_sql:', sql)
   let data = await query(sql)
-  let count = await
-  query(`select count(*) as count from hw_join ${where_sql}`)
+  for (let item in data){
+    let ziliao = await query(`select * from hw_insurance where activity_id=? and mobile=?`, [item.activity_id, item.mobile]);
+    data[item].isZiliao = ziliao.length === 0 ? 0 : 1;
+  }
+  let count = await query(`select count(*) as count from hw_join ${where_sql}`)
 
   ctx.body = Object.assign({code: 0, message: 'success', 'data': data}, pagination(limit, pageIndex, count[0].count))
 }
