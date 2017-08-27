@@ -27,10 +27,11 @@ const add = async(ctx, next) => {
 
   const sql = `INSERT into hw_travel_note VALUES(
               NULL,'${title}','${desc}', '${link_url}', '${image_url}', '${author}', '${view_count}', '${start_date}', 
-              '${type}', admin_id='${admin_id}' '${getLinuxTimeStamp()}'
+              '${type}', '${admin_id}', '${getLinuxTimeStamp()}'
           )`;
-  var data = await query(sql);
-  console.log('insert hw_travel_note:', data);
+  console.log('add hw_travel_note sql', sql);
+  const data = await query(sql);
+  // console.log('insert hw_travel_note:', data);
   ctx.body = {code: 0, message:'保存成功', data}
 
 }
@@ -45,7 +46,7 @@ const update = async(ctx, next) => {
   const params = ctx.request.body;
   const {id, title, desc, link_url, image_url, author, view_count, start_date, type,
     admin_id, created_at} = params;
-  const sql = `update hw_travel_note set title='${title}', desc='${desc}', link_url='${link_url}', image_url='${image_url}',
+  const sql = `update hw_travel_note set title='${title}', \`desc\`='${desc}', link_url='${link_url}', image_url='${image_url}',
   author='${author}', view_count='${view_count}',
               start_date='${start_date}', type='${type}', admin_id=${admin_id}, created_at='${created_at}' where id=${id}`;
   console.log('update hw_travel_note sql:', sql);
