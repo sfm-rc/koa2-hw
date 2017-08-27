@@ -1,11 +1,12 @@
 import Router from 'koa-router'
 import indexCtrl from '../controllers/indexCtrl'
 
-
 const router = Router()
 
 // router.get('/', indexCtrl)
 
+const travelNote = require('./travelNoteRouter')
+router.use('/travelNote', travelNote.routes(), travelNote.allowedMethods())
 /**
  * 活动路由
  */

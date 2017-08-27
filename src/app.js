@@ -1,17 +1,14 @@
 import http from 'http'
 import Koa from 'koa'
 import path from 'path'
-import views from 'koa-views'
 import convert from 'koa-convert'
 import json from 'koa-json'
 import Bodyparser from 'koa-bodyparser'
 import logger from 'koa-logger'
 import koaStatic from 'koa-static-plus'
-import serve from 'koa-static'
 import config from './config'
 import cors from 'koa2-cors'
 import send from 'koa-send'
-import Router from 'koa-router'
 
 const app = new Koa()
 const bodyparser = Bodyparser()
@@ -29,7 +26,7 @@ app.use(cors({
   credentials: true,
   // allowMethods: ['GET', 'POST', 'DELETE'],
   // allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-}));
+}))
 app.use(convert(bodyparser))
 app.use(convert(json()))
 app.use(convert(logger()))
@@ -56,8 +53,20 @@ app.use(async (ctx, next) => {
   const ms = new Date() - start
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
 })
+app.use(async (ctx, next) => {
+  //console.log('--------ctx:', ctx);
+  const url = ctx.url;
+  if (url.indexOf('/dist') > -1) {
+    const filePath = url.substr(url.lastIndexOf('/'), url.length);
+    console.log('---------filePath:', filePath);
+    await send(ctx, path.resolve('/public/dist' + filePath));
+  } else {
+    await send(ctx, path.resolve('/public/index.html'));
+  }
+  await next();
+});
 
-app.use(serve('/public'));
+//app.use(serve('/public'));
 app.use(async (ctx, next) => {
   const url = ctx.url;
   console.log('--------url:', url);
