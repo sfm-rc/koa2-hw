@@ -6,10 +6,10 @@
     "/hybrid/user-hw/activity/join/:activity_id": "/index.html",
     "/hybrid/user-hw/trail/list": "/index.html",
     "/hybrid/user-hw/trail/detail": "/index.html",
-    "/hybrid/user-hw/list": "/index.html",
-    "/user-hw-staticapp-495abd8b0499fbe360ab.js": "/app-495abd8b0499fbe360ab.js",
-    "/user-hw-staticframework-495abd8b0499fbe360ab.js": "/framework-495abd8b0499fbe360ab.js",
-    "/user-hw-staticapp-495abd8b0499fbe360ab.css": "/app-495abd8b0499fbe360ab.css",
-    "/user-hw-staticvendor-495abd8b0499fbe360ab.css": "/vendor-495abd8b0499fbe360ab.css"
+    "/hybrid/user-hw/list/:type/:admin_id": "/index.html",
+    "/user-hw-staticapp-77197f922bc5e16c7201.js": "/app-77197f922bc5e16c7201.js",
+    "/user-hw-staticframework-77197f922bc5e16c7201.js": "/framework-77197f922bc5e16c7201.js",
+    "/user-hw-staticapp-77197f922bc5e16c7201.css": "/app-77197f922bc5e16c7201.css",
+    "/user-hw-staticvendor-77197f922bc5e16c7201.css": "/vendor-77197f922bc5e16c7201.css"
   }
 }
