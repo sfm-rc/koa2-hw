@@ -5,6 +5,9 @@ const router = Router()
 
 // router.get('/', indexCtrl)
 
+/**
+ * 游记路由
+ */
 const travelNote = require('./travelNoteRouter')
 router.use('/travelNote', travelNote.routes(), travelNote.allowedMethods())
 /**
