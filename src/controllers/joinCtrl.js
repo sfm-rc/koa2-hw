@@ -90,7 +90,7 @@ const list_search = async (ctx, next) => {
   }
 
   if (user_name_alias) {
-    where['user_name'] = user_name
+    where['user_name_alias'] = user_name_alias
   }
 
   if (mobile) {
@@ -102,11 +102,11 @@ const list_search = async (ctx, next) => {
   for (let item in where) {
     const value = where[item]
     if (first) {
-      where_sql = `where ${item} like "%${value}%"`
+      where_sql = `where A.${item} like "%${value}%"`
       first = false
     }
     else {
-      where_sql = `${where_sql} and ${item} like "%${value}%"`
+      where_sql = `${where_sql} and A.${item} like "%${value}%"`
     }
   }
 
@@ -137,7 +137,7 @@ const list_search = async (ctx, next) => {
     let ziliao = await query(`select * from hw_insurance where activity_id=? and mobile=?`, [item.activity_id, item.mobile]);
     data[item].isZiliao = ziliao.length === 0 ? 0 : 1;
   }
-  let count = await query(`select count(*) as count from hw_join ${where_sql}`)
+  let count = await query(`select count(*) as count from hw_join as A ${where_sql}`)
 
   ctx.body = Object.assign({code: 0, message: 'success', 'data': data}, pagination(limit, pageIndex, count[0].count))
 }

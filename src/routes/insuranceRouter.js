@@ -12,4 +12,13 @@ const router = Router()
 router.post('/add', insuranceCtrl.add)
 
 
+/**
+ * 查询保单， 后台
+ *
+ *
+ *
+ */
+router.post('/list_search', insuranceCtrl.list_search)
+
+
 export default router
