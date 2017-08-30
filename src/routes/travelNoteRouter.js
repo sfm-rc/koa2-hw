@@ -9,6 +9,7 @@ router.post('/add', travelNoteCtrl.add)
 
 router.post('/list_search', travelNoteCtrl.list_search)
 
-
 router.post('/update', travelNoteCtrl.update)
+
+router.post('/update_show', travelNoteCtrl.update_show)
 export default router

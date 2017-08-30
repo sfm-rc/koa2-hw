@@ -10,9 +10,9 @@ import moment from 'moment';
 const list = async (ctx, next) => {
   const params = ctx.request.body;
   const {limit, pageIndex, type, admin_id} = params;
-  const sql = 'select * from hw_travel_note where type=? and admin_id=? ORDER BY id desc limit ?,?';
+  const sql = 'select * from hw_travel_note where type=? and admin_id=? and is_show=1 ORDER BY id desc limit ?,?';
   let data = await query(sql, [type, admin_id, (pageIndex-1)*limit, limit]);
-  let count = await query('select count(*) as count from hw_travel_note where type=? and admin_id=?', [type, admin_id]);
+  let count = await query('select count(*) as count from hw_travel_note where type=? and admin_id=? and is_show=1', [type, admin_id]);
   ctx.body = Object.assign({code: 0, message: 'success', 'data': data}, pagination(limit, pageIndex, count[0].count));
 }
 
@@ -27,7 +27,7 @@ const add = async(ctx, next) => {
 
   const sql = `INSERT into hw_travel_note VALUES(
               NULL,'${title}','${desc}', '${link_url}', '${image_url}', '${author}', '${view_count}', '${start_date}', 
-              '${type}', '${admin_id}', '${getLinuxTimeStamp()}'
+              '${type}', '${admin_id}', '${getLinuxTimeStamp()}, 1'
           )`;
   console.log('add hw_travel_note sql', sql);
   const data = await query(sql);
@@ -117,9 +117,27 @@ const list_search = async (ctx, next) => {
 }
 
 
+/***
+ * 隐藏 展示
+ * @param ctx
+ * @param next
+ * @returns {Promise.<void>}
+ */
+const update_show = async(ctx, next) => {
+  const params = ctx.request.body;
+  const {id, is_show} = params;
+  const sql = `update hw_travel_note set is_show='${is_show}' where id=${id}`;
+  console.log('update hw_travel_note sql:', sql);
+  const res = await query(sql);
+  ctx.body = {code: 0, message: 'success', data: res}
+}
+
+
+
 export default {
   list,
   add,
   list_search,
   update,
+  update_show,
 }

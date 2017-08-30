@@ -11,9 +11,9 @@ import moment from 'moment';
 const list = async (ctx, next) => {
   const params = ctx.request.body;
   const {admin_id, limit, pageIndex} = params;
-  const sql = 'select * from hw_activity where admin_id=? ORDER BY seq desc limit ?,?';
+  const sql = 'select * from hw_activity where admin_id=? and is_show=1 ORDER BY seq desc limit ?,?';
   let data = await query(sql, [admin_id, (pageIndex-1)*limit, limit]);
-  let count = await query('select count(*) as count from hw_activity where admin_id=?', [admin_id]);
+  let count = await query('select count(*) as count from hw_activity where admin_id=? and is_show=1', [admin_id]);
   // let join_count = await query('select count(*) as count from hw_join where activity_id=?', [data])
   data = data.map(item=>{
     if(item.registrate_end_time < moment().unix()){
@@ -112,7 +112,7 @@ const add = async(ctx, next) => {
   const sql = `INSERT INTO hw_activity VALUES (NULL, '${title}', '${link_url}', '${image_url}',
               '${start_time}', '${end_time}', '${registrate_end_time}', '${cur_num}', '${limit_num}', 
               '${location}', '${leader_name_alias}', '${success}', '${points}', '${seq}', '${status}', 
-              ${price}, ${admin_id}, '${type}')`;
+              ${price}, ${admin_id}, '${type}'), 1`;
   console.log('add activity sql:', sql);
   const res = await query(sql);
   ctx.body = {code: 0, message: 'success', data: res}
@@ -137,6 +137,21 @@ const update = async(ctx, next) => {
   ctx.body = {code: 0, message: 'success', data: res}
 }
 
+/***
+ * 隐藏 展示
+ * @param ctx
+ * @param next
+ * @returns {Promise.<void>}
+ */
+const update_show = async(ctx, next) => {
+  const params = ctx.request.body;
+  const {id, is_show} = params;
+  const sql = `update hw_activity set is_show='${is_show}' where id=${id}`;
+  console.log('update activity sql:', sql);
+  const res = await query(sql);
+  ctx.body = {code: 0, message: 'success', data: res}
+}
+
 
 export default {
   list,
@@ -144,4 +159,5 @@ export default {
   update,
   get,
   list_search,
+  update_show,
 }

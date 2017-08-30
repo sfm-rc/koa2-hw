@@ -13,7 +13,7 @@ const join = async (ctx, next) => {
   await query('set autocommit=0;')
   await query('begin;')
   try {
-    const joinUser = await query('select count(*) as count from hw_join where activity_id=? and mobile=?', [activity_id, mobile])
+    const joinUser = await query('select count(*) as count from hw_join where activity_id=? and mobile=? and is_success=1', [activity_id, mobile])
     console.log('joinUser---', joinUser)
     if (joinUser[0].count > 0) {
       x.body = {code: 110, message: '您已经报过名', data: {}}
@@ -26,7 +26,7 @@ const join = async (ctx, next) => {
         // 可以报名
         const sql = `INSERT into hw_join VALUES(
                 NULL,'${user_name}', '${user_name_alias}', '${sex}', '${mobile}', 
-                '${down_payment}', '${extra}', '${activity_id}', '${getLinuxTimeStamp()}'
+                '${down_payment}', '${extra}', '${activity_id}', '${getLinuxTimeStamp()}', 1
             )`
         var data = await query(sql)
         console.log('insert hw_join for join', data)
@@ -142,8 +142,24 @@ const list_search = async (ctx, next) => {
   ctx.body = Object.assign({code: 0, message: 'success', 'data': data}, pagination(limit, pageIndex, count[0].count))
 }
 
+/***
+ *  报名成功失败
+ * @param ctx
+ * @param next
+ * @returns {Promise.<void>}
+ */
+const update_success = async(ctx, next) => {
+  const params = ctx.request.body;
+  const {id, is_success} = params;
+  const sql = `update hw_join set is_success='${is_success}' where id=${id}`;
+  console.log('update hw_join sql:', sql);
+  const res = await query(sql);
+  ctx.body = {code: 0, message: 'success', data: res}
+}
+
 export default {
   join,
   list,
-  list_search
+  list_search,
+  update_success,
 }

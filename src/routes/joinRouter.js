@@ -41,5 +41,6 @@ router.post('/list', joinCtrl.list)
  */
 router.post('/list_search', joinCtrl.list_search)
 
+router.post('/update_success', joinCtrl.update_success)
 
 export default router

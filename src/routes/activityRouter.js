@@ -40,4 +40,9 @@ router.post('/update', activityCtrl.update)
  */
 router.post('/get', activityCtrl.get)
 
+/**
+ * 隐藏展示
+ */
+router.post('/update_show', activityCtrl.update_show)
+
 export default router
