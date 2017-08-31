@@ -22,6 +22,7 @@ const add = async(ctx, next) => {
                 NULL,'${activity_id}','${user_name}', '${cer_type}', '${cer_id}', '${sex}', '${birth}', '${mobile}', 
                 '${e_contact}', '${e_contact_mobile}', '${getLinuxTimeStamp()}'
             )`;
+      console.log('insert insurance', sql);
       var data = await query(sql);
       console.log('insert hw_insurance:', data);
       ctx.body = {code: 0, message:'保单填写成功', data}

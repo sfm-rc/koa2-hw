@@ -27,7 +27,7 @@ const add = async(ctx, next) => {
 
   const sql = `INSERT into hw_travel_note VALUES(
               NULL,'${title}','${desc}', '${link_url}', '${image_url}', '${author}', '${view_count}', '${start_date}', 
-              '${type}', '${admin_id}', '${getLinuxTimeStamp()}, 1'
+              '${type}', '${admin_id}', '${getLinuxTimeStamp()}', 1
           )`;
   console.log('add hw_travel_note sql', sql);
   const data = await query(sql);
