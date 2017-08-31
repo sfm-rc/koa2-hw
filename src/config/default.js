@@ -3,13 +3,19 @@
  * @Author Ling.
  * @Email i@zeroling.com
  */
+
+let host = '127.0.0.1';
+if (process.env.NODE_ENV === 'dev') {
+  host = '121.199.25.36';
+}
+
 export default {
   port: 3001,
   db: {
-    host: '47.52.24.191',
-    port: '3308',
+    host: host,
+    port: '3306',
     database: 'hw',
     user: 'root',
-    password: 'suyuan123'
+    password: 'jg7758520'
   }
 }
