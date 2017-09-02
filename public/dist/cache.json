@@ -7,9 +7,9 @@
     "/hybrid/user-hw/trail/list": "/index.html",
     "/hybrid/user-hw/trail/detail": "/index.html",
     "/hybrid/user-hw/list/:type/:admin_id": "/index.html",
-    "/user-hw-staticapp-c0761ec42190f8c9518b.js": "/app-c0761ec42190f8c9518b.js",
-    "/user-hw-staticframework-c0761ec42190f8c9518b.js": "/framework-c0761ec42190f8c9518b.js",
-    "/user-hw-staticapp-c0761ec42190f8c9518b.css": "/app-c0761ec42190f8c9518b.css",
-    "/user-hw-staticvendor-c0761ec42190f8c9518b.css": "/vendor-c0761ec42190f8c9518b.css"
+    "/user-hw-staticapp-b1cb7a079b2ffede49fa.js": "/app-b1cb7a079b2ffede49fa.js",
+    "/user-hw-staticframework-b1cb7a079b2ffede49fa.js": "/framework-b1cb7a079b2ffede49fa.js",
+    "/user-hw-staticapp-b1cb7a079b2ffede49fa.css": "/app-b1cb7a079b2ffede49fa.css",
+    "/user-hw-staticvendor-b1cb7a079b2ffede49fa.css": "/vendor-b1cb7a079b2ffede49fa.css"
   }
 }
