@@ -120,7 +120,7 @@ const add = async(ctx, next) => {
   const {name, mobile, email, pwd, club_name, club_address, 
     contact_name, contact_mobile, contact_email} = params;
   const sql = `INSERT INTO hw_admin VALUES (NULL, '${name}', '${mobile}', '${email}',
-              '${pwd}', '${club_name}', '', '${contact_name}', '${contact_mobile}', 
+              '${pwd}', '${club_name}', '${club_address}', '${contact_name}', '${contact_mobile}', 
               '${contact_email}', '', '', '')`;
   console.log('add admin sql:', sql);
   const res = await query(sql);
