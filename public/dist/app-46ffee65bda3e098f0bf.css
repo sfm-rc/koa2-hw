@@ -1,0 +1,508 @@
+ul.home-ul {
+  font-size: 64px;
+  font-size: 4rem;
+}
+ul.home-ul li {
+  padding: 16px 16px;
+  padding: 1rem 1rem;
+}
+.ft-activity {
+  background-color: #fff;
+  font-size: 14px;
+  height: 125px;
+  padding: 30px 20px;
+  border-bottom: 1px solid #eaeaea;
+}
+.ft-activity .img-wrapper {
+  display: inline-block;
+  width: 155px;
+  height: 125px;
+  vertical-align: top;
+}
+.ft-activity .img-wrapper img {
+  width: 100%;
+  height: 100%;
+}
+.ft-activity .content {
+  vertical-align: top;
+  height: 125px;
+  margin-left: 30px;
+  display: inline-block;
+}
+.ft-activity .content .type {
+  height: 40px;
+  font-size: 35px;
+  line-height: 40px;
+}
+.ft-activity .content .type .info {
+  display: inline-block;
+  width: 250px;
+}
+.ft-activity .content .contact {
+  height: 30px;
+  line-height: 30px;
+  font-size: 30px;
+  margin: 15px 0;
+  color: #545454;
+}
+.ft-activity .infos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.ft-activity .infos .info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  font-size: 30px;
+}
+.ft-activity .infos .icon {
+  background-repeat: no-repeat;
+  background-size: 30px;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 10px;
+}
+.ft-activity .infos .value {
+  color: #d3d3d3;
+}
+.ft-activity .infos .view {
+  background-image: url(/user-hw-static/view.png);
+}
+.ft-activity .infos .upvote {
+  background-image: url(/user-hw-static/upvote.png);
+}
+.ft-activity .infos .comment {
+  background-image: url(/user-hw-static/comment.png);
+}
+.hw-list .search-bar-wrapper {
+  background-color: #03a8dd;
+  padding: 10px;
+}
+.hw-list .search-bar-wrapper .am-search {
+  background-color: #03a8dd;
+}
+.hw-list .search-bar-wrapper .am-search-cancel {
+  color: #fff;
+}
+.hw-list .activity-wrapper {
+  margin-top: 20px;
+}
+.hw-profile-editor .title {
+  height: 90px;
+  line-height: 90px;
+  font-size: 35px;
+  background-color: #edf2f3;
+  padding-left: 30px;
+}
+.hw-profile-editor .btn-wrapper {
+  margin-top: 80px;
+  padding: 0 40px;
+}
+.hw-profile-editor .am-list-line {
+  border-bottom: 1PX solid #ddd;
+}
+.hw-profile-editor .hint {
+  font-size: 25px;
+  line-height: 35px;
+  background-color: #fff;
+  padding: 30px;
+}
+.hw-profile-editor .hint .hint-title {
+  color: #dd992c;
+  float: left;
+}
+.hw-profile-editor .hint .content {
+  padding-left: 125px;
+}
+.activity-trail {
+  height: 125px;
+  padding: 30px 20px;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #fff;
+}
+.activity-trail a {
+  text-decoration: none;
+}
+.activity-trail .img {
+  float: left;
+}
+.activity-trail .img img {
+  width: 155px;
+  height: 125px;
+}
+.activity-trail .img .clear {
+  clear: both;
+}
+.activity-trail .details {
+  margin-left: 175px;
+  height: 100%;
+  position: relative;
+}
+.activity-trail .details .title {
+  font-size: 25px;
+  line-height: 27px;
+  color: #222;
+}
+.activity-trail .details .end-date {
+  font-size: 20px;
+  color: #a7a7a7;
+  margin-top: 15px;
+}
+.activity-trail .details .infos {
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+}
+.activity-trail .details .infos .price {
+  color: #ff2f44;
+}
+.activity-trail .details .infos .people {
+  background-image: url(/user-hw-static/people.png);
+  background-size: 20px;
+  display: inline-block;
+  width: 100px;
+  padding-left: 30px;
+  margin-left: 20px;
+  background-repeat: no-repeat;
+}
+.activity-trail .details .status-btn {
+  position: absolute;
+  bottom: 0px;
+  right: 0;
+  line-height: 25px;
+  padding: 10px 15px;
+  border: 1px solid #79d0ee;
+  color: #79d0ee;
+  font-size: 30px;
+}
+.activity-trail .details .status-btn.end {
+  color: #cfcfcf;
+  border-color: #cfcfcf;
+}
+.activity-trail .details .status-btn.full {
+  color: #f5a724;
+  border-color: #f5a724;
+}
+.activity-trail .details .status-btn.time-out {
+  color: #f7969a;
+  border-color: #f7969a;
+}
+.hw-activity-list .head-img img {
+  width: 100%;
+  height: 340px;
+}
+.hw-activity-list .show-more-btn {
+  font-size: 25px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #fff;
+  color: #2c9bfc;
+  text-align: center;
+  margin-top: 50px;
+}
+.trail {
+  height: 125px;
+  padding: 30px 20px;
+  border-bottom: 1px solid #eaeaea;
+  background-color: #fff;
+}
+.trail .img {
+  float: left;
+}
+.trail .img img {
+  width: 155px;
+  height: 125px;
+}
+.trail .img .clear {
+  clear: both;
+}
+.trail .details {
+  margin-left: 175px;
+  height: 100%;
+  position: relative;
+}
+.trail .details .title {
+  font-size: 25px;
+  line-height: 27px;
+  color: #222;
+}
+.trail .details .end-date {
+  font-size: 20px;
+  color: #a7a7a7;
+  margin-top: 15px;
+}
+.trail .details .infos {
+  color: #a7a7a7;
+  font-size: 20px;
+  position: absolute;
+  bottom: 0;
+}
+.trail .details .infos .view {
+  background-image: url(/user-hw-static/view.png);
+  background-size: 20px;
+  display: inline-block;
+  width: 100px;
+  height: 20px;
+  padding-left: 30px;
+  margin-left: 20px;
+  background-repeat: no-repeat;
+}
+.trail-list .head-img img {
+  width: 100%;
+  height: 340px;
+}
+.trail-list .show-more-btn {
+  font-size: 25px;
+  height: 50px;
+  line-height: 50px;
+  background-color: #fff;
+  color: #2c9bfc;
+  text-align: center;
+  margin-top: 50px;
+}
+.trail-detail .profile-info {
+  background-color: #fff;
+  position: relative;
+  height: 160px;
+}
+.trail-detail .profile-info .avatar {
+  position: absolute;
+  left: 20px;
+  top: 5px;
+}
+.trail-detail .profile-info .avatar img {
+  border-radius: 100%;
+  width: 150px;
+  height: 150px;
+}
+.trail-detail .profile-info .info {
+  padding-left: 195px;
+  color: #868686;
+}
+.trail-detail .profile-info .info .name {
+  padding-top: 20px;
+  height: 30px;
+  font-size: 30px;
+  line-height: 30px;
+}
+.trail-detail .profile-info .info .phone {
+  font-size: 25px;
+  margin: 20px 0;
+}
+.trail-detail .profile-info .info .address {
+  font-size: 25px;
+}
+.trail-detail .trail-info {
+  margin-top: 10px;
+  background-color: #fff;
+}
+.trail-detail .trail-info .info-block {
+  height: 90px;
+  line-height: 90px;
+  margin: 0 20px;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 30px;
+}
+.trail-detail .trail-info .info-block .name {
+  width: 160px;
+  display: inline-block;
+}
+.trail-detail .trail-info .detail-content {
+  margin: 0 20px;
+  border: 1px solid #eaeaea;
+  border-top: 0;
+  line-height: 35px;
+  padding: 10px;
+  font-size: 25px;
+}
+.trail-detail .comment {
+  border-bottom: 1px solid #eaeaea;
+  position: relative;
+  min-height: 140px;
+  margin-left: 30px;
+}
+.trail-detail .comment .avatar {
+  position: absolute;
+  top: 0;
+}
+.trail-detail .comment .avatar img {
+  width: 80px;
+  height: 80px;
+}
+.trail-detail .comment .content {
+  margin: 30px 0 0 130px;
+}
+.trail-detail .comment .content .author-info {
+  font-size: 30px;
+}
+.trail-detail .comment .content .text {
+  font-size: 25px;
+  line-height: 35px;
+  margin-top: 20px;
+}
+.hw-activity-join .head {
+  background-color: white;
+}
+.hw-activity-join .head img {
+  width: 100%;
+  height: 340px;
+}
+.hw-activity-join .head .head-content {
+  padding: 30px;
+}
+.hw-activity-join .head .head-title {
+  font-size: 35px;
+}
+.hw-activity-join .head .head-sub-title {
+  letter-spacing: 3px;
+  margin-top: 10px;
+  font-size: 24px;
+}
+.hw-activity-join .head .head-sub-title span:first-child {
+  color: #f59814;
+}
+.hw-activity-join .head .head-sub-title span:last-child {
+  color: #696767;
+}
+.hw-activity-join .join-wrapper {
+  background-color: white;
+  margin-top: 20px;
+  height: 100%;
+  width: 100%;
+}
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+q:before,
+blockquote:after,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+body {
+  background-color: #edf3f3;
+}
