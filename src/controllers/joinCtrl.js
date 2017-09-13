@@ -81,9 +81,6 @@ const list_search = async (ctx, next) => {
   const params = ctx.request.body
   const {admin_id, activity_id, user_name, user_name_alias, mobile, limit, pageIndex} = params
   const where = {}
-  if (activity_id) {
-    where['activity_id'] = activity_id
-  }
 
   if (user_name) {
     where['user_name'] = user_name
@@ -126,6 +123,17 @@ const list_search = async (ctx, next) => {
     else {
       where_sql = `${where_sql} and activity_id in (${activities})`
     }
+  }
+
+  if (activity_id) {
+    if (first) {
+      where_sql = `where activity_id=${activity_id}`
+      first = false
+    }
+    else {
+      where_sql = `${where_sql} and activity_id=${activity_id}`
+    }
+    // where['activity_id'] = activity_id
   }
 
   const sql = `select A.*, B.title from hw_join as A join hw_activity as B 
