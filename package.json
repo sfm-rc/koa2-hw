@@ -10,7 +10,8 @@
     "compile": "babel src/ --out-dir app/ --retain-lines --source-maps",
     "clean": "rm -rf app/",
     "test": "mocha -u bdd --compilers js:babel-core/register",
-    "dev": "npm start"
+    "dev": "npm start",
+    "start:pm2": "pm2 start pm2.json"
   },
   "engines": {
     "node": ">= 4"
@@ -40,7 +41,8 @@
     "koa2-cors": "^2.0.3",
     "lodash": "^4.11.1",
     "moment": "^2.18.1",
-    "mysql": "^2.14.0"
+    "mysql": "^2.14.0",
+    "pm2": "^2.7.2"
   },
   "devDependencies": {
     "babel-eslint": "^6.0.4",

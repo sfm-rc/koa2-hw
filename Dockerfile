@@ -1,4 +1,4 @@
-FROM    docker.io/node:9.0
+FROM    registry.cn-hangzhou.aliyuncs.com/suyuan/node-nginx
 MAINTAINER      suyuan "suyuan1573@gmail.com"
 
 RUN mkdir -p /app
@@ -26,6 +26,7 @@ RUN npm run build
 
 WORKDIR /app/koa2-hw
 RUN npm install
+RUN npm run compile
 
 WORKDIR /app/hw
 RUN npm install
@@ -33,8 +34,6 @@ RUN npm run build
 
 
 
-
-RUN     /bin/echo -e "LANG=\"en_US.UTF-8\"" >/etc/default/local
-EXPOSE  22
-EXPOSE  80
-CMD     /usr/sbin/sshd -D
+WORKDIR /app/koa2-hw
+CMD ["sh", "run.sh"]
+EXPOSE  3000
