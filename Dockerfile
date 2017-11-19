@@ -37,3 +37,5 @@ RUN npm run build
 WORKDIR /app/koa2-hw
 CMD ["sh", "run.sh"]
 EXPOSE  3000
+
+docker run --name mysql -p 3306:3306 --expose=3306 -e MYSQL_ROOT_PASSWORD=suyuan123 -d hw-mysql:latest
